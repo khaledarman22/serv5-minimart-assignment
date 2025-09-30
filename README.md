@@ -1,6 +1,6 @@
 # Mini Mart
 
-![Logo](https://via.placeholder.com/150?text=Mini+Mart)
+![Logo]([https://via.placeholder.com/150?text=Mini+Mart](https://drive.google.com/file/d/1DuJds2PG6Q0UrqEtyceSvBKdKlEQNLMJ/view?usp=sharing))
 
 A mini e-commerce app developed by **Serv5** for browsing products, viewing details, managing a shopping cart, and user authentication.
 
