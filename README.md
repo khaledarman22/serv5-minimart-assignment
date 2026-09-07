@@ -1,127 +1,99 @@
-# Mini Mart
+# 🛒 MiniMart — Flutter E-Commerce & Offline-First Caching
 
-![Logo](https://drive.google.com/uc?export=view\&id=1DuJds2PG6Q0UrqEtyceSvBKdKlEQNLMJ)
+<div align="center">
 
-A mini e-commerce app developed by **Serv5** for browsing products, viewing details, managing a shopping cart, and user authentication.
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![BLoC](https://img.shields.io/badge/BLoC%20%2F%20Cubit-1565C0?style=for-the-badge&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
+![Hive](https://img.shields.io/badge/Hive%20NoSQL-FFC107?style=for-the-badge&logoColor=black)
+![Dio](https://img.shields.io/badge/Dio-0A7EA4?style=for-the-badge&logoColor=white)
 
----
+A full-fledged Flutter E-Commerce application with **Authentication**, **Product Catalog**, **Cart & Checkout Management**, **Light/Dark Themes**, and **Offline-First Caching** using Hive & Dio.
 
-## 📝 Description
-
-**Mini Mart** is a Flutter-based e-commerce application that provides users with a seamless shopping experience.
-The app allows users to:
-
-* Browse through a variety of products
-* View detailed information about each item
-* Manage their shopping cart
-* Create accounts for personalized shopping experiences
-
-⚡ **Note**: This project was developed in just **two days** as part of an assignment.
-📄 Assignment details: [Flutter Task PDF](./flutter_task.pdf)
+</div>
 
 ---
 
-## 🛠 Tech Stack
+## 🚀 Key Features
 
-* **Flutter**: Cross-platform framework
-* **Dart**: Programming language for Flutter
-* **Firebase Core**: Firebase initialization
-* **Firebase Auth**: User authentication
-* **Cloud Firestore**: Firebase NoSQL database
-* **Firebase Storage**: Cloud storage for images/files
-* **Cubit / Flutter BLoC**: State management
-* **Hive & Hive Flutter**: Local storage
-* **Intl & Easy Localization**: Multi-language support
-* **Dartz**: Functional programming utilities
-* **Dio**: HTTP client for API calls
-* **Equatable**: Value equality for states
-* **Get It**: Service locator / dependency injection
-* **Easy Logger**: Simple logging
+- 🔐 **Authentication & Security**: Secure User registration & login with Firebase Authentication and input validation.
+- 🛍️ **Product Catalog & Details**: Grid product listing with search, category filtering, and item detail views.
+- 🛒 **Cart & Real-Time Calculations**: Add, update quantity, and remove items with instant total & discount computation.
+- 💳 **Checkout Flow**: Multi-step checkout with delivery address management and order confirmation.
+- 🌓 **Dynamic Theme Switching**: Seamless switching between Light and Dark themes via `ThemeCubit`.
+- 💾 **Offline-First Caching**: Fast local persistence of cart data and user session via `Hive`.
+- 🛡️ **Crash Reporting & Analytics**: Real-time error monitoring with `Firebase Crashlytics`.
 
 ---
 
-## ✨ Features
+## 🏛️ Project Architecture
 
-* 🔐 User authentication (sign up, login)
-* 🛍 Browse product list
-* 📄 Product detail screen
-* 🛒 Add to cart & view cart
-* 🌗 Dark/Light theme support
-
----
-
-## ⚙️ Installation & Setup
-
-Follow these steps to run the project locally:
-
-```bash
-# Clone the repository
-git clone https://github.com/Serv5/mini-mart.git
-cd mini-mart
-
-# Install dependencies
-flutter pub get
 ```
-
-### 🔧 Firebase Setup
-
-1. Create a new project at [Firebase Console](https://console.firebase.google.com/)
-2. Add Android & iOS apps to the Firebase project
-3. Download `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
-4. Place them inside:
-
-   * `android/app`
-   * `ios/Runner`
-
-```bash
-# Run the app
-flutter run
+lib/
+├── core/                         # Shared utilities, caching & foundation
+│   ├── cach_helper/              # Hive caching boxes, keys & storage helpers
+│   ├── constant/                 # App Colors, Typography & Dimensions
+│   ├── errors/                   # Custom Failure & Exception handlers
+│   ├── models/                   # Product & Cart data models
+│   ├── themes/                   # Light & Dark theme definitions and ThemeCubit
+│   └── widgets/                  # Atomic components (Buttons, Fields, ProductCard)
+│
+├── features/                     # Feature-First Modular Structure
+│   ├── auth/                     # Authentication (Login, Register, AuthCubit)
+│   ├── home/                     # Home Screen, Banners, Categories & HomeCubit
+│   ├── prodact/                  # Product Listing & Details
+│   ├── cart/                     # Cart Management & CartCubit
+│   └── checkout/                 # Order Placement & Checkout Screens
+│
+├── firebase_options.dart         # Generated Firebase configuration
+└── service_locator.dart          # Dependency Injection (GetIt) setup
 ```
 
 ---
 
-## 📱 Screenshots
+## 📦 Core Dependencies
 
-* **Home Screen**
-  ![Home Screen](https://drive.google.com/uc?export=view\&id=1qcvF9jHsSRym4_jEojOtdsEk8GNFuwWS)
-
-* **Product Detail**
-  ![Product Detail](https://drive.google.com/uc?export=view\&id=1nJqcGWAEP7g4skv5UsCymnO7NGaq5KaZ)
-
-* **Cart Screen**
-  ![Cart Screen](https://drive.google.com/uc?export=view\&id=1EOncCuzb_cXaQElWnm51L9fx3cbORSx3)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions!
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+| Library | Functionality |
+| :--- | :--- |
+| **`flutter_bloc`** | State management across Auth, Cart, Home, and Theme modules |
+| **`firebase_auth` & `firestore`** | Cloud authentication and data synchronization |
+| **`hive` / `hive_flutter`** | Fast NoSQL local caching for offline persistence |
+| **`dio`** | HTTP network client with error handling |
+| **`firebase_crashlytics`** | Real-time crash monitoring in production |
+| **`animate_do`** | Smooth interactive animations and micro-interactions |
 
 ---
 
-## 📜 License
+## ⚙️ Setup & Run
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+### Prerequisites
+- Flutter SDK `>= 3.0.0`
+- Firebase CLI (for custom backend connection)
+
+### Steps
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/khaledarman22/serv5-minimart-assignment.git
+   cd serv5-minimart-assignment
+   ```
+
+2. **Install packages:**
+   ```bash
+   flutter pub get
+   ```
+
+3. **Run application:**
+   ```bash
+   flutter run
+   ```
 
 ---
 
-## 📬 Contact
+## 👨‍💻 Author
 
-**Khaled Waleed**
-📧 [khaled.waleed.dev@gmail.com](mailto:khaled.waleed.dev@gmail.com)
-💼 [LinkedIn](https://www.linkedin.com/in/khaled-waleed-a95b70208)
-📱 +20 111 726 9760
-
----
-
-## 🔗 Links
-
-* **Project Repository**: [https://github.com/Serv5/mini-mart](https://github.com/Serv5/mini-mart)
-* **Project Build (Google Drive)**: [Download](https://drive.google.com/file/d/14wPWY3xEZCiJ1bGSyDKVpmZq34F4wJAf/view?usp=sharing)
-* **Assignment File**: [View PDF](https://drive.google.com/file/d/1g6KaG6N0VrJ4FiJtTEDwxy6d8xKLGgtJ/view?usp=sharing)
+**Khaled Waleed** — Senior Flutter Engineer & Team Lead
+- 💼 LinkedIn: [khaled-waleed](https://linkedin.com/in/khaled-waleed-a95b70208)
+- 🐙 GitHub: [@khaledarman22](https://github.com/khaledarman22)
+- 📧 Email: Khaled.waleed.dev@gmail.com
